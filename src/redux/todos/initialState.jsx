@@ -2,14 +2,13 @@ export const initialState = [
     {
         id:1,
         text: "Learn React Js",
-        completed: false,
+        completed: true,
         color:'green'
     },
     {
         id:2,
         text: "Learn Node js",
         completed: false,
-        color: "yellow"
     },
     {
         id:3,

@@ -7,7 +7,7 @@ import { colorSelected, deleted, toggled } from '../redux/todos/actions';
 const TodoList = () => {
     const dispatch = useDispatch()
     const todos = useSelector(state => state.todos);
-{/* <FaRegCheckCircle className='text-green-600'/>  */}
+    const filters = useSelector(state => state.filters);
     const handleStatusChange = (todoId) =>{
         dispatch(toggled(todoId))
     } 
@@ -19,7 +19,29 @@ const TodoList = () => {
     } 
     return (
         <div>
-            {todos.map(todo => 
+            {todos
+            // filter by status
+            .filter(todo =>{
+                const {status} = filters;
+                switch (status) {
+                    case 'Complete':
+                        return todo.completed;
+                    case 'Incomplete':
+                        return !todo.completed;
+                
+                    default:
+                        return true;
+                }
+            })
+            // filter by color
+            .filter(todo =>{
+                const {colors} = filters;
+                if (colors.length > 0) {
+                    return colors.includes(todo.color)
+                }
+                return true
+            })
+            .map(todo => 
                 <div key={todo.id}>
                     <ul className='border-t px-2 border-b flex justify-between items-center hover:bg-gray-100 hover:transition-all space-x-4 border-gray-200 py-2'>
                         <div className='flex gap-4 items-center rounded-full'>
@@ -54,5 +76,6 @@ const TodoList = () => {
         </div>
     );
 };
+
 
 export default TodoList;
