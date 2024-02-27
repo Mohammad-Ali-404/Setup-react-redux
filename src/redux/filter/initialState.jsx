@@ -1,5 +1,7 @@
-const initialState ={
-    status: 'All',
-    colors: []
-} 
-export default initialState;
+export const initialState =
+    {
+        id:1,
+        status: 'All',
+        colors: []
+    } 
+

@@ -1,8 +1,8 @@
-import { COLORCHNAGED, STATUSCHANGED } from "./actionTypes"
+import { COLORCHANGED, STATUSCHANGED  } from "./actionTypes"
 
 export const colorChanged = (color, changeType) =>{
     return{
-        type:COLORCHNAGED,
+        type:COLORCHANGED,
         payload:{ color, changeType }
     }
 }
